@@ -160,8 +160,8 @@ func (p_game *Game) RenderCursor() {
 	p_game.assets[assetPlayers].texture.SetAlphaMod(128)
 
 	switch p_game.player {
-	case symbolX: p_game.RenderX(x, y); break
-	case symbolO: p_game.RenderO(x, y); break
+	case symbolX: p_game.RenderX(x, y)
+	case symbolO: p_game.RenderO(x, y)
 
 	default: panic("player is not X or O")
 	}
@@ -181,8 +181,8 @@ func (p_game *Game) RenderBoard() {
 			switch tile {
 			case symbolNone: continue
 
-			case symbolX: p_game.RenderX(x, y); break
-			case symbolO: p_game.RenderO(x, y); break
+			case symbolX: p_game.RenderX(x, y)
+			case symbolO: p_game.RenderO(x, y)
 
 			default: panic("Tile is not X, O or None")
 			}
@@ -192,10 +192,10 @@ func (p_game *Game) RenderBoard() {
 
 func (p_game *Game) RenderVictoryText() {
 	switch p_game.state {
-	case stateXWon: p_game.RenderX(0, 0); break
-	case stateOWon: p_game.RenderO(0, 0); break
+	case stateXWon: p_game.RenderX(0, 0)
+	case stateOWon: p_game.RenderO(0, 0)
 
-	case stateTie: p_game.assets[assetTie].Render(p_game.renderer); break
+	case stateTie: p_game.assets[assetTie].Render(p_game.renderer)
 
 	default: panic("RenderVictoryText() called when state is not XWon, OWon or Tie")
 	}
@@ -225,22 +225,16 @@ func (p_game *Game) Input() {
 		case *sdl.QuitEvent:
 			p_game.quit = true
 
-			break
-
-		case *sdl.MouseMotionEvent: p_game.InputMouseMotion(t.X, t.Y); break
+		case *sdl.MouseMotionEvent: p_game.InputMouseMotion(t.X, t.Y)
 		case *sdl.MouseButtonEvent:
 			if t.State == sdl.PRESSED {
 				p_game.InputMouseClick();
 			}
 
-			break
-
 		case *sdl.KeyboardEvent:
 			switch t.Keysym.Sym {
-			case sdl.K_ESCAPE: p_game.quit = true; break
+			case sdl.K_ESCAPE: p_game.quit = true
 			}
-
-			break
 		}
 	}
 }
@@ -272,9 +266,9 @@ func (p_game *Game) InputMouseClick() {
 		won, symbol := p_game.board.CheckState(Symbol(p_game.player))
 		if won {
 			switch symbol {
-			case symbolX:    p_game.state = stateXWon; break
-			case symbolO:    p_game.state = stateOWon; break
-			case symbolNone: p_game.state = stateTie;  break
+			case symbolX:    p_game.state = stateXWon
+			case symbolO:    p_game.state = stateOWon
+			case symbolNone: p_game.state = stateTie
 
 			default: panic("symbol is not X, O or None")
 			}

@@ -19,7 +19,7 @@ func (p_board *Board) Clear() {
 	}
 }
 
-func (p_board *Board) Place(p_x int32, p_y int32, p_symbol Symbol) bool {
+func (p_board *Board) Place(p_x, p_y int32, p_symbol Symbol) bool {
 	if p_board[p_y][p_x] != symbolNone {
 		return false
 	} else {

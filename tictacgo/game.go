@@ -203,7 +203,7 @@ func (p_game *Game) RenderVictoryText() {
 	p_game.assets[assetWon].Render(p_game.renderer)
 }
 
-func (p_game *Game) RenderX(p_x int32, p_y int32) {
+func (p_game *Game) RenderX(p_x, p_y int32) {
 	p_game.assets[assetPlayers].dest.X = p_x;
 	p_game.assets[assetPlayers].dest.Y = p_y;
 
@@ -211,7 +211,7 @@ func (p_game *Game) RenderX(p_x int32, p_y int32) {
 	p_game.assets[assetPlayers].Render(p_game.renderer)
 }
 
-func (p_game *Game) RenderO(p_x int32, p_y int32) {
+func (p_game *Game) RenderO(p_x, p_y int32) {
 	p_game.assets[assetPlayers].dest.X = p_x;
 	p_game.assets[assetPlayers].dest.Y = p_y;
 
@@ -239,7 +239,7 @@ func (p_game *Game) Input() {
 	}
 }
 
-func (p_game *Game) InputMouseMotion(p_x int32, p_y int32) {
+func (p_game *Game) InputMouseMotion(p_x, p_y int32) {
 	p_game.cursor.X = int32(float32(p_x) /
 	                  (float32(p_game.assets[assetBoard].dest.W) / 3.0))
 	p_game.cursor.Y = int32(float32(p_y - p_game.assets[assetBoard].dest.Y) /

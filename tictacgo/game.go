@@ -222,8 +222,7 @@ func (p_game *Game) RenderO(p_x, p_y int32) {
 func (p_game *Game) Input() {
 	for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
 		switch t := event.(type) {
-		case *sdl.QuitEvent:
-			p_game.quit = true
+		case *sdl.QuitEvent: p_game.quit = true
 
 		case *sdl.MouseMotionEvent: p_game.InputMouseMotion(t.X, t.Y)
 		case *sdl.MouseButtonEvent:
